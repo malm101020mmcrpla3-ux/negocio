@@ -1,0 +1,36 @@
+{% extends 'catalog/base.html' %}
+
+{% block titulo %}{{ titulo }}{% endblock %}
+
+{% block contenido %}
+<div class="card">
+    <h2>{{ titulo }}</h2>
+    <p>Total de usuarios: <strong>{{ usuarios|length }}</strong></p>
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Usuario</th>
+                <th>Nombre Completo</th>
+                <th>Email</th>
+                <th>Staff</th>
+                <th>Activo</th>
+                <th>Fecha de Registro</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for usuario in usuarios %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ usuario.username }}</td>
+                <td>{{ usuario.first_name }} {{ usuario.last_name }}</td>
+                <td>{{ usuario.email }}</td>
+                <td>{% if usuario.is_staff %}✅{% else %}❌{% endif %}</td>
+                <td>{% if usuario.is_active %}✅{% else %}❌{% endif %}</td>
+                <td>{{ usuario.date_joined|date:"d/m/Y" }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
