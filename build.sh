@@ -1,7 +1,4 @@
-
-set -o errexit
-
-pip install -r requirements.txt
-python manage.py collectstatic --no-input
-python manage.py migrate
-python manage.py createsuperuser --no-input || true
+python manage.py makemigrations tienda
+git add tienda/migrations/
+git commit -m "Agregar migraciones de tienda"
+git push
