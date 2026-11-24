@@ -9,10 +9,11 @@ from django.db.models import Count, Sum
 def inicio(request): 
     productos = Producto.objects.filter(activo=True) 
     categorias = Categoria.objects.all() 
-    return render(request, 'tienda/inicio.html', { 
-        'productos': productos, 
-        'categorias': categorias 
-    }) 
+    return render(
+         request, 
+        'tienda/inicio.html', 
+        { 'productos': productos, 'categorias': categorias },
+    ) 
  
 # ---------- CATEGORÍAS (CRUD) ---------- 
 def lista_categorias(request): 
