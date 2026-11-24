@@ -6,14 +6,13 @@ from .forms import CategoriaForm, ProductoForm, ClienteForm
 from django.contrib.auth.decorators import login_required
 from django.db.models import Count, Sum
  
-def inicio(request): 
-    productos = Producto.objects.filter(activo=True) 
-    categorias = Categoria.objects.all() 
-    return render(
-         request, 
-        'tienda/inicio.html', 
-        { 'productos': productos, 'categorias': categorias },
-    ) 
+def inicio(request):
+    productos = Producto.objects.filter(activo=True)
+    categorias = Categoria.objects.all()
+    return render(request, 'tienda/inicio.html', {
+        'productos': productos,
+        'categorias': categorias
+    }) 
  
 # ---------- CATEGORÍAS (CRUD) ---------- 
 def lista_categorias(request): 
