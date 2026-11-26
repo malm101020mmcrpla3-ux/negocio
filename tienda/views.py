@@ -6,13 +6,15 @@ from .models import Categoria, Producto, Cliente
 from .forms import CategoriaForm, ProductoForm, ClienteForm
 
 
+
 def inicio(request):
-    productos = Producto.objects.filter(activo=True)
+    productos = Producto.objects.filter(activo=True).select_related('categoria')
     categorias = Categoria.objects.all()
     return render(request, 'tienda/inicio.html', {
         'productos': productos,
         'categorias': categorias
     })
+
 
 
 # ---------- CATEGORÍAS (CRUD) ----------
