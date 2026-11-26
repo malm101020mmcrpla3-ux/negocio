@@ -1,4 +1,2 @@
-python manage.py makemigrations tienda
-git add tienda/migrations/
-git commit -m "Agregar migraciones de tienda"
-git push
+pip install -r requirements.txt && python manage.py collectstatic --no-input && python manage.py migrate
+
